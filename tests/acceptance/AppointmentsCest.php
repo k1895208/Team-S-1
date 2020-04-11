@@ -50,11 +50,6 @@ class AppointmentsCest
             $I->dontSeeElement('error');
         }
 
-        public function wasay(AcceptanceTester $I)
-
-        {
-        }
-
 
     public function tryToTest(AcceptanceTester $I)
     {
