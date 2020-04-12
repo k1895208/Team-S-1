@@ -13,11 +13,12 @@ class AppointmentsCest
         public function appointmentSuccessful(AcceptanceTester $I)
         {
             $I->amOnPage('/add_appointment.php');
-            $I->fillField('patient_id','150');
+            $I->fillField('patient_id','James Bond');
             $I->fillField('date','2020-04-11');
             $I->fillField('option_admission','daycase');
-            $I->fillField('time','2-3pm test');
+            $I->fillField('time','2-3pm');
             $I->click('submit');
+            $I->amOnPage('http://localhost:8888/public/add_appointment.php?patient_id=150&date=2020-04-15&option_admission=daycase&time=2-3pm&submit=');
             $I->click('submit');
             $I->canSee('Appointment has been created');
             $I->canSeeInCurrentUrl('/add_appointment.php');
@@ -30,7 +31,7 @@ class AppointmentsCest
             $I->fillField('patient_id','');
             $I->fillField('date','2020-04-11');
             $I->fillField('option_admission','daycase');
-            $I->fillField('time','2-3pm?');
+            $I->fillField('time','2-3pm');
             $I->click('submit');
             $I->canSee('Please select an item in the list.');
             $I->canSeeInCurrentUrl('/add_appointment.php');
@@ -41,10 +42,10 @@ class AppointmentsCest
         public function appointmentEmptyDate(AcceptanceTester $I)
         {
             $I->amOnPage('/add_appointment.php');
-            $I->fillField('patient_id','143');
+            $I->fillField('patient_id','James Bond');
             $I->fillField('date','');
             $I->fillField('option_admission','daycase');
-            $I->fillField('time','2-3pm?');
+            $I->fillField('time','2-3pm');
             $I->click('submit');
             $I->canSee('Please fill in this field.');
             $I->canSeeInCurrentUrl('/add_appointment.php');
@@ -84,6 +85,11 @@ class AppointmentsCest
             $I->see('Manage');
             $I->canSeeInCurrentUrl('/appointments.php');
 
+        }
+
+        public function _after(AcceptanceTester $I)
+        {
+            $I->click('LOGOUT');
         }
         
 
