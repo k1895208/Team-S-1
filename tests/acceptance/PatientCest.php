@@ -135,14 +135,14 @@ class PatientCest
         $I->fillField('gp_phone','');
         $I->fillField('accessCode','');
         $I->click('Submit Changes');
-        $I->seeCurrentUrlEquals('/Team-S/public/register_patient.php');
+        $I->seeCurrentUrlEquals('/Team-S/public/editPatient.php');
 
     }
 
     public function editPatientTestWorks(AcceptanceTester $I)
     {
         $I->wantTo("verify");
-        $I->amOnPage('/editPatient.php');
+        $I->amOnPage('/editPatient.php?id=158');
         $I->fillField('first_name','noor');
         $I->fillField('last_name','baakza');
         $I->fillField('date_of_birth','02-03-2000');
@@ -177,7 +177,7 @@ class PatientCest
         $I->fillField('gp_phone','wkdmkcwkmc');
         $I->fillField('accessCode','yoyo');
         $I->click('Submit Changes');
-        $I->seeCurrentUrlEquals('/Team-S/public/register_patient.php');
+        $I->seeCurrentUrlEquals('/Team-S/public/editPatient.php');
 
     }
 
